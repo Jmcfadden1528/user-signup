@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form>
-    <label>Username:
-        <input name='username' type='text' />
-    </label>
+
+<form action='/' method='POST'>
+    <label>Username:</label>
+        <input name='username' type='text' value='{{username}}' />
+        <p class='error'>{{ username_error }} </p>
     <br>
     <br>
     <label>Password:
@@ -12,10 +13,23 @@
     </label>
     <br>
     <br>
+    <label>Re-type Password:
+        <input name='confirmed_password' type='password' />
+    </label> <p class='error'>{{ password_error }} {{empty_password_error}}</p>
+    <br>
+    <br>
     <label>E-mail (optional)
-        <input name='email' type='text' />
+        <input name='email' type='text' value='{{email}}' />
+        <p class='error'>{{ invalid_email_error }}</p>
+    </label>
+    <br>
+    <br>
+    <label>
+        <input type='submit' value='Submit' />
     </label>
 </form>
 
-{%endblock%}
+
+
+{% endblock %}
 
