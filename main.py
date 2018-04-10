@@ -33,14 +33,15 @@ def index():
         password_error = "Passwords must match and cannot be left blank."
 
     if email != "":
-        if ' ' in email or email or "." or "@" not in email or len(email) < 3 or len(email) > 20:
+        if ' ' in email or "." not in email or "@" not in email or len(email) < 3 or len(email) > 20:
             
             invalid_email_error = "Please enter a valid E-mail address."
        
-        email_list = email.split()
-        at_count = email_list.count('@')  
-        period_count = email_list.count('.')  
-        if at_count > 1 or period_count > 1:
+        email_list = email.split('@')
+        at_count = len(email_list)
+        period_email_list = email.split('.')  
+        period_count = len(period_email_list)  
+        if at_count > 2 or period_count > 2:
             invalid_email_error = "Please enter a valid E-mail address."
 
 
